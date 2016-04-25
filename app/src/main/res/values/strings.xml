@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Foodie</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="default_age">18</string>
+    <string name="fixed_string_age">Age:</string>
+    <string name="fixed_string_male">Male</string>
+    <string name="fixed_string_female">Female</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

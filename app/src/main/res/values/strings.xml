@@ -8,4 +8,11 @@
     <string name="fixed_string_male">Male</string>
     <string name="fixed_string_female">Female</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="title_tab_one">EAT</string>
+    <string name="title_tab_two">CONTACTS</string>
+    <string name="title_tab_three">PROFILE</string>
+    <string name="action_profile">Profile</string>
 </resources>

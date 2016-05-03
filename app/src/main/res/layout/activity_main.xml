@@ -12,7 +12,10 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/custom_tab_layout_height"
             app:tabMode="fixed"
-            app:tabGravity="fill"/>
+            app:tabGravity="fill"
+            app:tabTextColor="@color/white"
+            app:tabSelectedTextColor="@color/primary"
+            app:tabIndicatorColor="@color/primary"/>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager

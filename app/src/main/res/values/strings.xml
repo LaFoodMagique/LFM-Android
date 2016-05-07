@@ -21,4 +21,16 @@
     <string name="menu_facebook">Facebook</string>
     <string name="menu_feedback">Feedback</string>
 
+    <string name="bm_string_friends">Friends</string>
+    <string name="bm_string_restaurants">Restaurants</string>
+    <string name="bm_string_profile">Profile</string>
+    <string name="bm_string_settings">Settings</string>
+    <string name="bm_string_logout">Logout</string>
+    <string name="bm_string_scan">Scan</string>
+    <string name="bm_string_reservation">Reservation</string>
+
+    <string name="tab_string_first">Near me</string>
+    <string name="tab_string_second">History</string>
+    <string name="tab_string_third">Contacts</string>
+
 </resources>

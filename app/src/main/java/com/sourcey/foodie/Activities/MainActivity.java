@@ -20,9 +20,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.nightonke.boommenu.BoomMenuButton;
@@ -38,20 +35,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
 public class MainActivity extends AppCompatActivity
     implements
     BoomMenuButton.OnSubButtonClickListener,
     BoomMenuButton.AnimatorListener,
     View.OnClickListener {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private View mCustomView;
-    private BoomMenuButton boomMenuButtonInActionBar;
-
-    private boolean isInit = false;
-    private Context mContext;
+    private TabLayout       tabLayout;
+    private ViewPager       viewPager;
+    private View            mCustomView;
+    private BoomMenuButton  boomMenuButtonInActionBar;
+    private boolean         isInit = false;
+    private Context         mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +111,8 @@ public class MainActivity extends AppCompatActivity
             "#FF5722",
             "#795548",
             "#9E9E9E",
-            "#607D8B"};
+            "#607D8B"
+    };
 
     public int GetRandomColor() {
         Random random = new Random();
@@ -125,7 +121,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initBoom() {
-        int number = 5;
+        int number = getResources().getInteger(R.integer.ab_boom_number);
 
         Drawable[] drawables = new Drawable[number];
         int[] drawablesResource = new int[]{
@@ -133,17 +129,19 @@ public class MainActivity extends AppCompatActivity
                 R.drawable.ic_restaurant,
                 R.drawable.copy,
                 R.drawable.settings,
-                R.drawable.info
+                R.drawable.ic_restaurant,
+                R.drawable.ic_restaurant
         };
         for (int i = 0; i < number; i++)
             drawables[i] = ContextCompat.getDrawable(mContext, drawablesResource[i]);
 
         String[] STRINGS = new String[]{
-                "Friends",
-                "Restaurants",
-                "Profile",
-                "Settings",
-                "Logout"
+                getString(R.string.bm_string_friends),
+                getString(R.string.bm_string_restaurants),
+                getString(R.string.bm_string_profile),
+                getString(R.string.bm_string_settings),
+                getString(R.string.bm_string_scan),
+                getString(R.string.bm_string_reservation)
         };
 
         String[] strings = new String[number];
@@ -156,12 +154,11 @@ public class MainActivity extends AppCompatActivity
             colors[i][0] = Util.getInstance().getPressedColor(colors[i][1]);
         }
 
-        // Now with Builder, you can init BMB more convenient
         new BoomMenuButton.Builder()
                 .subButtons(drawables, colors, strings)
                 .button(ButtonType.CIRCLE)
                 .boom(BoomType.PARABOLA)
-                .place(PlaceType.CIRCLE_5_1)
+                .place(PlaceType.CIRCLE_6_1)
                 .subButtonsShadow(Util.getInstance().dp2px(2), Util.getInstance().dp2px(2))
                 .onSubButtonClick(this)
                 .animator(this)
@@ -179,14 +176,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
-            case R.id.action_qr:
-                return onScanQrClicked();
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private boolean onScanQrClicked() {
+    private  boolean onScanQrClicked() {
         try {
 
             Intent intent = new Intent("com.google.zxing.client.android.SCAN");
@@ -224,9 +219,9 @@ public class MainActivity extends AppCompatActivity
      */
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new OneFragment(), "Near me");
-        adapter.addFrag(new TwoFragment(), "History");
-        adapter.addFrag(new ThreeFragment(), "Contacts");
+        adapter.addFrag(new OneFragment(), getString(R.string.tab_string_first));
+        adapter.addFrag(new TwoFragment(), getString(R.string.tab_string_second));
+        adapter.addFrag(new ThreeFragment(), getString(R.string.tab_string_third));
         viewPager.setAdapter(adapter);
     }
 
@@ -252,7 +247,14 @@ public class MainActivity extends AppCompatActivity
     public void onClick(View v) {}
 
     @Override
-    public void onClick(int buttonIndex) {}
+    public void onClick(int buttonIndex) {
+        if (buttonIndex == this.getResources().getInteger(R.integer.bm_scan_menu_value)) {
+            onScanQrClicked();
+        }
+        if (buttonIndex == this.getResources().getInteger(R.integer.bm_profile_value)) {
+            onProfileClicked();
+        }
+    }
 
 class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -284,7 +286,7 @@ class ViewPagerAdapter extends FragmentPagerAdapter {
 
     }
 
-    public void profileClicked(){
+    public void onProfileClicked(){
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }

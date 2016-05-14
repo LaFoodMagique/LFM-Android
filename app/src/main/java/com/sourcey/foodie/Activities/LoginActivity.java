@@ -12,7 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sourcey.foodie.API.APIManager;
 import com.sourcey.foodie.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.ButterKnife;
 import butterknife.Bind;
@@ -71,6 +75,19 @@ public class LoginActivity extends AppCompatActivity {
         String password = _passwordText.getText().toString();
 
         // TODO: Implement your own authentication logic here.
+        APIManager.auth.login(email, password, null, new APIManager.APIListener() {
+            @Override
+            public void onResponse(String json) {
+                try {
+                    JSONObject response = new JSONObject(json);
+                    APIManager.token = (String) response.get("token");
+
+                    // TODO: Change actity here
+                } catch (JSONException error) {
+                    error.printStackTrace();
+                }
+            }
+        });
 
         new android.os.Handler().postDelayed(
                 new Runnable() {

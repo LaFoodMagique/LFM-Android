@@ -2,7 +2,10 @@ package com.sourcey.foodie.API.httprequests;
 
 import android.content.Context;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.sourcey.foodie.API.APIManager;
@@ -21,6 +24,23 @@ public class HttpRequest
         if (queue == null) {
             queue = Volley.newRequestQueue(context);
         }
+
+        StringRequest request = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                   @Override
+                   public void onResponse(String response)
+                   {
+                        listener.onResponse(response);
+                   }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        queue.add(request);
     }
 
     public static void post(final String url, final Map<String, String> params, final Context context, final APIManager.APIListener listener)
@@ -28,6 +48,22 @@ public class HttpRequest
         if (queue == null) {
             queue = Volley.newRequestQueue(context);
         }
+
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        listener.onResponse(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        queue.add(request);
     }
 
     public static void put(final String url, final Map<String, String> params, final Context context, final APIManager.APIListener listener)

@@ -4,5 +4,7 @@
 
     <integer name="bm_scan_menu_value">4</integer>
     <integer name="bm_profile_value">2</integer>
+    <integer name="bm_restaurant_value">1</integer>
+    <integer name="bm_reservation_value">5</integer>
 
 </resources>

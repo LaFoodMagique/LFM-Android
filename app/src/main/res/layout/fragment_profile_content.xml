@@ -20,7 +20,9 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/activity_horizontal_margin"
+            android:onClick="mailClicked"
+            android:id="@+id/mailAddress">
 
             <ImageView
                 android:id="@+id/ivContactItem3"
@@ -29,7 +31,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_email_black_24dp" />
+                android:src="@drawable/ic_email_black_24dp"
+                android:contentDescription="@string/cd_mail_address"/>
 
             <TextView
                 android:id="@+id/tvNumber3"
@@ -38,12 +41,10 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_toEndOf="@id/ivContactItem3"
-                android:layout_toLeftOf="@+id/chkState3"
                 android:layout_toRightOf="@id/ivContactItem3"
-                android:layout_toStartOf="@+id/chkState3"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="chintan@letsnurture.com"
+                android:text="@string/tv_profile_mail_text"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#212121" />
 
@@ -60,21 +61,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#727272" />
 
-            <ToggleButton
-                android:id="@+id/chkState3"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/toggle_selector"
-                android:checked="true"
-                android:padding="6dp"
-                android:textOff=""
-                android:textOn="" />
-
         </RelativeLayout>
 
         <include layout="@layout/item_divider" />
@@ -84,7 +70,8 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/activity_horizontal_margin"
+            android:id="@+id/homeAddress">
 
             <ImageView
                 android:id="@+id/ivContactItem5"
@@ -93,7 +80,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_location_on_black_24dp" />
+                android:src="@drawable/ic_location_on_black_24dp"
+                android:contentDescription="@string/cd_home_address"/>
 
             <TextView
                 android:id="@+id/tvNumber5"
@@ -102,14 +90,12 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_toEndOf="@id/ivContactItem5"
-                android:layout_toLeftOf="@+id/chkState5"
                 android:layout_toRightOf="@id/ivContactItem5"
-                android:layout_toStartOf="@+id/chkState5"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="202 Park Street, Los Angeles"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#212121" />
+                android:textColor="#212121"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -123,21 +109,6 @@
                 android:text="Home"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#727272" />
-
-            <ToggleButton
-                android:id="@+id/chkState5"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/toggle_selector"
-                android:checked="true"
-                android:padding="6dp"
-                android:textOff=""
-                android:textOn="" />
 
         </RelativeLayout>
 

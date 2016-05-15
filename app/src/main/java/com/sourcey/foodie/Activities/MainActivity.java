@@ -10,6 +10,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -28,7 +29,9 @@ import com.nightonke.boommenu.Types.ButtonType;
 import com.nightonke.boommenu.Types.DimType;
 import com.nightonke.boommenu.Types.PlaceType;
 import com.nightonke.boommenu.Util;
-import com.sourcey.foodie.Fragments.*;
+import com.sourcey.foodie.Fragments.TopFragments.HomeFragment;
+import com.sourcey.foodie.Fragments.TopFragments.RestaurantFragment;
+import com.sourcey.foodie.Fragments.TopFragments.ReservationFragment;
 import com.sourcey.foodie.R;
 
 import java.util.ArrayList;
@@ -74,11 +77,10 @@ public class MainActivity extends AppCompatActivity
         ((Toolbar) mCustomView.getParent()).setContentInsetsAbsolute(0,0);
 
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        HomeFragment frag = new HomeFragment();
+        frag.setArguments(getIntent().getExtras());
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.frame_fragment, frag).commit();
 
         //Intent intent = new Intent(this, LoginActivity.class);
         //startActivity(intent);
@@ -213,18 +215,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    /**
-     * Adding fragments to ViewPager
-     * @param viewPager
-     */
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new OneFragment(), getString(R.string.tab_string_first));
-        adapter.addFrag(new TwoFragment(), getString(R.string.tab_string_second));
-        adapter.addFrag(new ThreeFragment(), getString(R.string.tab_string_third));
-        viewPager.setAdapter(adapter);
-    }
-
     @Override
     public void toShow() { }
 
@@ -251,42 +241,36 @@ public class MainActivity extends AppCompatActivity
         if (buttonIndex == this.getResources().getInteger(R.integer.bm_scan_menu_value)) {
             onScanQrClicked();
         }
-        if (buttonIndex == this.getResources().getInteger(R.integer.bm_profile_value)) {
+        else if (buttonIndex == this.getResources().getInteger(R.integer.bm_profile_value)) {
             onProfileClicked();
         }
+        else if (buttonIndex == this.getResources().getInteger(R.integer.bm_restaurant_value)) {
+            onRestaurantClicked();
+        }
+        else if (buttonIndex == this.getResources().getInteger(R.integer.bm_reservation_value)) {
+            onReservationClicked();
+        }
     }
 
-class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+    private void onRestaurantClicked() {
+        RestaurantFragment frag = new RestaurantFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFrag(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-
+        transaction.replace(R.id.frame_fragment, frag);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
-    public void onProfileClicked(){
+    private void onReservationClicked() {
+        ReservationFragment frag = new ReservationFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.frame_fragment, frag);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    private void onProfileClicked(){
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }

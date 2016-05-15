@@ -22,7 +22,7 @@ public class Authenticate
 
     public void login(final String email, final String password, final Context context, final APIManager.APIListener listener)
     {
-        String url = authRootURL + "/foodie/auth/login";
+        String url = authRootURL + "/login";
 
         Map<String, String> params = new HashMap<>();
         params.put("email", email);
@@ -31,8 +31,31 @@ public class Authenticate
         HttpRequest.post(url, params, context, listener);
     }
 
+    /*
     public void logout(final Context context, final APIManager.APIListener listener)
     {
-        String url = "";
+        String url = "/logout";
+
+
+    }
+    */
+
+    public void register(final String email, final String password, final String phone,
+                         final String firstName, final String lastName,
+                         final String address_part_1,
+                         final Context context, final APIManager.APIListener listener)
+    {
+        String url = authRootURL + "/users";
+
+        Map<String,String> params = new HashMap<>();
+        params.put("email", email);
+        params.put("password", password);
+        params.put("phone", phone);
+        params.put("firstName", firstName);
+        params.put("lastName", lastName);
+        params.put("addressPart1", address_part_1);
+        params.put("isFoodie", "1");
+
+        HttpRequest.post(url, params, context, listener);
     }
 }

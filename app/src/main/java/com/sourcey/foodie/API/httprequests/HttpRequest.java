@@ -11,6 +11,7 @@ import com.android.volley.toolbox.Volley;
 import com.sourcey.foodie.API.APIManager;
 
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by sp4rkh on 14/05/16.
@@ -43,7 +44,7 @@ public class HttpRequest
         queue.add(request);
     }
 
-    public static void post(final String url, final Map<String, String> params, final Context context, final APIManager.APIListener listener)
+    public static void post(final String url, final Map<String, Object> params, final Context context, final APIManager.APIListener listener)
     {
         if (queue == null) {
             queue = Volley.newRequestQueue(context);
@@ -66,10 +67,25 @@ public class HttpRequest
         queue.add(request);
     }
 
-    public static void put(final String url, final Map<String, String> params, final Context context, final APIManager.APIListener listener)
+    public static void put(final String url, final Map<String, Object> params, final Context context, final APIManager.APIListener listener)
     {
         if (queue == null) {
             queue = Volley.newRequestQueue(context);
         }
+
+        StringRequest request = null;
+
+        queue.add(request);
+    }
+
+    public static void delete(final String url, final Context context, final APIManager.APIListener listener)
+    {
+        if (queue == null) {
+            queue = Volley.newRequestQueue(context);
+        }
+
+        StringRequest request = null;
+
+        queue.add(request);
     }
 }

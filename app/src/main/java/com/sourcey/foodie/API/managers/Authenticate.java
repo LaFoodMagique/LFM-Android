@@ -24,7 +24,7 @@ public class Authenticate
     {
         String url = authRootURL + "/login";
 
-        Map<String, String> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<>();
         params.put("email", email);
         params.put("password", password);
 
@@ -47,7 +47,7 @@ public class Authenticate
     {
         String url = authRootURL + "/users";
 
-        Map<String,String> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<>();
         params.put("email", email);
         params.put("password", password);
         params.put("phone", phone);

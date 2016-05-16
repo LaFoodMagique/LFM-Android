@@ -8,7 +8,6 @@ import com.sourcey.foodie.API.httprequests.HttpRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by sp4rkh on 14/05/16.
@@ -63,7 +62,7 @@ public class User
     }
 
     /*
-        Reservations
+        Reservation
      */
 
     public void getReservations(final Integer id, final Context context, final APIManager.APIListener listener)
@@ -147,15 +146,70 @@ public class User
         Resto
      */
 
+    public void listResto(final Context context, final APIManager.APIListener listener)
+    {
+        String url = userRootURL + "/restaurants";
+
+        HttpRequest.get(url, context, listener);
+    }
+
+    public void detailResto(final Integer restoId, final Context context, final APIManager.APIListener listener)
+    {
+        String url = userRootURL + "/restaurants/" + restoId.toString();
+
+        HttpRequest.get(url, context, listener);
+    }
+
     /*
         Menu
      */
-    
+
+    public void restoMenus(final Integer restoId, final Context context, final APIManager.APIListener listener)
+    {
+        String url = userRootURL + "/restaurants/" + restoId.toString() + "/menus";
+
+        HttpRequest.get(url, context, listener);
+    }
 
     /*
         Dishes
      */
 
+    public void restoDishes(final  Integer restoId, final Context context, final APIManager.APIListener listener)
+    {
+        String url = userRootURL + "/restaurants/" + restoId.toString() + "/dishes";
 
+        HttpRequest.get(url, context, listener);
+    }
 
+    public void detailDish(final Integer dishId, final Context context, final APIManager.APIListener listener)
+    {
+        String url = userRootURL + "/dishes/" + dishId.toString();
+
+        HttpRequest.get(url, context, listener);
+    }
+
+    /*
+        Message
+     */
+
+    public void listMessage(final Integer userId, final Context context, final APIManager.APIListener listener)
+    {
+        String url = userRootURL + "/foodies/" + userId.toString() + "/messages";
+
+        HttpRequest.get(url, context, listener);
+    }
+
+    public void createMessage(final Integer userId,
+                              final Integer userToSendId, final String message,
+                              final Context context, final APIManager.APIListener listener)
+    {
+        String url = userRootURL + "/foodies/" + userId.toString() + "/messages";
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("foodieId", userToSendId);
+        params.put("message", message);
+
+        HttpRequest.post(url, params, context, listener);
+    }
 }

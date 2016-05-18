@@ -29,16 +29,16 @@
     <string name="bm_string_scan">Scan</string>
     <string name="bm_string_reservation">Reservation</string>
 
-    <string name="tab_home_string_first">Near me</string>
-    <string name="tab_home_string_second">History</string>
-    <string name="tab_home_string_third">Contacts</string>
+    <string name="tab_home_string_first">Last coms</string>
+    <string name="tab_home_string_second">Reservations</string>
+    <string name="tab_home_string_third">Messages</string>
     <string name="tv_profile_mail_text">phillipe@salaud.com</string>
-    <string name="tab_reservation_string_first">a</string>
-    <string name="tab_reservation_string_second">b</string>
-    <string name="tab_reservation_string_third">c</string>
-    <string name="tab_restaurant_string_first">1</string>
-    <string name="tab_restaurant_string_second">2</string>
-    <string name="tab_restaurant_string_third">3</string>
+    <string name="tab_reservation_string_first">Last</string>
+    <string name="tab_reservation_string_second">Near me</string>
+    <string name="tab_reservation_string_third">Future</string>
+    <string name="tab_restaurant_string_first">Last</string>
+    <string name="tab_restaurant_string_second">Near me</string>
+    <string name="tab_restaurant_string_third">Find</string>
 
     <string-array name="sports_array">
         <item>Shuttle Badminton</item>
@@ -56,5 +56,7 @@
     <string name="cd_profile_picture">Profile picture</string>
     <string name="cd_mail_address">Mail address</string>
     <string name="cd_home_address">Home address</string>
+    <string name="tab_friend_string_first">List</string>
+    <string name="tab_friend_string_second">Message</string>
 
 </resources>

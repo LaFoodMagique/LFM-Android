@@ -1,12 +1,12 @@
 package com.sourcey.foodie.Fragments.BottomFragments;
 
-        import android.app.Fragment;
-        import android.os.Bundle;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-        import com.sourcey.foodie.R;
+import com.sourcey.foodie.R;
 
 /**
  * Created by Perith on 18/05/2016.

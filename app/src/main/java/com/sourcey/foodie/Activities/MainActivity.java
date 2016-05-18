@@ -29,6 +29,7 @@ import com.nightonke.boommenu.Types.ButtonType;
 import com.nightonke.boommenu.Types.DimType;
 import com.nightonke.boommenu.Types.PlaceType;
 import com.nightonke.boommenu.Util;
+import com.sourcey.foodie.Fragments.TopFragments.FriendFragment;
 import com.sourcey.foodie.Fragments.TopFragments.HomeFragment;
 import com.sourcey.foodie.Fragments.TopFragments.RestaurantFragment;
 import com.sourcey.foodie.Fragments.TopFragments.ReservationFragment;
@@ -250,6 +251,9 @@ public class MainActivity extends AppCompatActivity
         else if (buttonIndex == this.getResources().getInteger(R.integer.bm_reservation_value)) {
             onReservationClicked();
         }
+        else if (buttonIndex == this.getResources().getInteger(R.integer.bm_friends_value)) {
+            onFriendsClicked();
+        }
     }
 
     private void onRestaurantClicked() {
@@ -263,6 +267,15 @@ public class MainActivity extends AppCompatActivity
 
     private void onReservationClicked() {
         ReservationFragment frag = new ReservationFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.frame_fragment, frag);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    private void onFriendsClicked() {
+        FriendFragment frag = new FriendFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.frame_fragment, frag);

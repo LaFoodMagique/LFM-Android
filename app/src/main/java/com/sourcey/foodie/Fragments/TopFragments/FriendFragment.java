@@ -10,16 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sourcey.foodie.Fragments.BottomFragments.ReservationFutur;
-import com.sourcey.foodie.Fragments.BottomFragments.ReservationLast;
-import com.sourcey.foodie.Fragments.BottomFragments.ReservationToday;
+import com.sourcey.foodie.Fragments.BottomFragments.FriendList;
+import com.sourcey.foodie.Fragments.BottomFragments.FriendMessage;
 import com.sourcey.foodie.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ReservationFragment extends Fragment {
+public class FriendFragment extends Fragment {
 
     private View myFragmentView;
     protected TabLayout tabLayout;
@@ -55,7 +54,7 @@ public class ReservationFragment extends Fragment {
 
     }
 
-    public ReservationFragment() {
+    public FriendFragment() {
         // Required empty public constructor
     }
 
@@ -84,9 +83,8 @@ public class ReservationFragment extends Fragment {
      */
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
-        adapter.addFrag(new ReservationLast(),  getString(R.string.tab_reservation_string_first));
-        adapter.addFrag(new ReservationToday(), getString(R.string.tab_reservation_string_second));
-        adapter.addFrag(new ReservationFutur(), getString(R.string.tab_reservation_string_third));
+        adapter.addFrag(new FriendList(),       getString(R.string.tab_friend_string_first));
+        adapter.addFrag(new FriendMessage(),    getString(R.string.tab_friend_string_second));
         viewPager.setAdapter(adapter);
     }
 }

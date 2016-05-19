@@ -34,7 +34,7 @@
     <string name="tab_home_string_third">Messages</string>
     <string name="tv_profile_mail_text">phillipe@salaud.com</string>
     <string name="tab_reservation_string_first">Last</string>
-    <string name="tab_reservation_string_second">Near me</string>
+    <string name="tab_reservation_string_second">Today</string>
     <string name="tab_reservation_string_third">Future</string>
     <string name="tab_restaurant_string_first">Last</string>
     <string name="tab_restaurant_string_second">Near me</string>

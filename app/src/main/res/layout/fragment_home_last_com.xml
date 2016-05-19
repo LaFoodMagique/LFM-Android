@@ -5,5 +5,9 @@
     tools:context="com.sourcey.foodie.Fragments.BottomFragments.HomeLastCom">
 
 
-
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView11"
+        android:layout_gravity="left|top" />
 </FrameLayout>

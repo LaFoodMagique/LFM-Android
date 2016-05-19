@@ -5,5 +5,27 @@
     tools:context="com.sourcey.foodie.Fragments.BottomFragments.ReservDetailResto">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="The restaurant"
+        android:id="@+id/textView7"
+        android:layout_gravity="center_horizontal|top" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="173dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Description"
+        android:id="@+id/textView8"
+        android:layout_gravity="left|center_vertical" />
+
+    <TextView
+        android:layout_width="231dp"
+        android:layout_height="111dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Map"
+        android:id="@+id/textView9"
+        android:layout_gravity="left|bottom" />
 </FrameLayout>

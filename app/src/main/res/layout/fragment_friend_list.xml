@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.sourcey.foodie.Fragments.BottomFragments.FriendList">
 
-
-
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView13"
+        android:layout_gravity="left|top" />
 </FrameLayout>

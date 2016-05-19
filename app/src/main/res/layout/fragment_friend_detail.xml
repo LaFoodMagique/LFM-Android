@@ -5,5 +5,27 @@
     tools:context="com.sourcey.foodie.Fragments.BottomFragments.FriendDetail">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Bob"
+        android:id="@+id/textView12"
+        android:layout_gravity="center_horizontal|top" />
 
+    <TextView
+        android:layout_width="322dp"
+        android:layout_height="180dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Last restaurant, his friends, ..."
+        android:id="@+id/textView13"
+        android:layout_gravity="left|center_vertical" />
+
+    <TextView
+        android:layout_width="365dp"
+        android:layout_height="147dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="His review"
+        android:id="@+id/textView14"
+        android:layout_gravity="left|bottom" />
 </FrameLayout>

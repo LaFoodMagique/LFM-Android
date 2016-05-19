@@ -83,8 +83,12 @@ public class LoginActivity extends AppCompatActivity {
                     apim.token = (String) response.get("token");
 
                     // TODO: Change activty here
+                    onLoginSuccess();
+
                 } catch (JSONException error) {
                     error.printStackTrace();
+                    onLoginFailed();
+
                 }
             }
         });
@@ -93,9 +97,10 @@ public class LoginActivity extends AppCompatActivity {
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
+                        //onLoginSuccess();
                         // onLoginFailed();
                         progressDialog.dismiss();
+                        _loginButton.setEnabled(true);
                     }
                 }, 3000);
 

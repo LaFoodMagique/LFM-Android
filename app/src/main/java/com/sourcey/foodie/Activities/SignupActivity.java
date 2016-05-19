@@ -10,7 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sourcey.foodie.API.APIManager;
 import com.sourcey.foodie.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.ButterKnife;
 import butterknife.Bind;
@@ -18,7 +22,7 @@ import butterknife.Bind;
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
 
-    @Bind(R.id.input_name) EditText _nameText;
+    @Bind(R.id.input_first_name) EditText _nameText;
     @Bind(R.id.input_email) EditText _emailText;
     @Bind(R.id.input_password) EditText _passwordText;
     @Bind(R.id.btn_signup) Button _signupButton;
@@ -122,6 +126,30 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+
+    protected void register() {
+        APIManager.auth.register(String.valueOf(R.id.input_email), String.valueOf(R.id.input_password),
+                String.valueOf(R.id.input_phone), String.valueOf(R.id.input_first_name),
+                String.valueOf(R.id.input_last_name), null, getBaseContext(),
+                new APIManager.APIListener() {
+                    @Override
+                    public void onResponse(String json) {
+                        try {
+                            JSONObject response = new JSONObject(json);
+                            APIManager.token = (String) response.get("token");
+
+                            // TODO: Change activty here
+                        } catch (JSONException error) {
+                            error.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    protected void SignupClicked(View view) {
+        register();
     }
 
 }

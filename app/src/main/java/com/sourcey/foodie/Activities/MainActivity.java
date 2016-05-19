@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.frame_fragment, frag).commit();
 
-        //Intent intent = new Intent(this, LoginActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -116,6 +116,12 @@ public class MainActivity extends AppCompatActivity
             "#9E9E9E",
             "#607D8B"
     };
+
+    @Override
+    public void onBackPressed() {
+        // Disable going back to the MainActivity
+        moveTaskToBack(true);
+    }
 
     public int GetRandomColor() {
         Random random = new Random();

@@ -12,7 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sourcey.foodie.API.APIManager;
 import com.sourcey.foodie.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.ButterKnife;
 import butterknife.Bind;
@@ -20,6 +24,7 @@ import butterknife.Bind;
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    private APIManager apim = new APIManager();
 
     @Bind(R.id.input_email) EditText _emailText;
     @Bind(R.id.input_password) EditText _passwordText;
@@ -70,7 +75,19 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        // TODO: Implement your own authentication logic here.
+        apim.auth.login(email, password, getApplicationContext(), new APIManager.APIListener() {
+            @Override
+            public void onResponse(String json) {
+                try {
+                    JSONObject response = new JSONObject(json);
+                    apim.token = (String) response.get("token");
+
+                    // TODO: Change activty here
+                } catch (JSONException error) {
+                    error.printStackTrace();
+                }
+            }
+        });
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -81,8 +98,8 @@ public class LoginActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                     }
                 }, 3000);
-    }
 
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
